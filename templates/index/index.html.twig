@@ -1,20 +1,150 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Hello IndexController!{% endblock %}
+{% block title %}sport Ludique{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<!-- page du bas  -->
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/perin/Documents/sportludique_sack/src/Controller/IndexController.php'|file_link(0) }}">src/Controller/IndexController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/perin/Documents/sportludique_sack/templates/index/index.html.twig'|file_link(0) }}">templates/index/index.html.twig</a></code></li>
-    </ul>
+<div class="banner">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="caption">
+          <h2>Sport Ludique</h2>
+          <div class="line-dec"></div>
+          <p>Tout types de <strong>Vélo</strong> vendu sur notre site .
+          <br><br>Commandez en toute sécurité, VTT, BMX, Vélo Electrique pour la ville.  </p>
+          <div class="main-button">
+            <a href="{{ path('BMX') }}">Article</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+<!-- Banner  -->
+
+
+
+<!-- Article -->
+<div class="featured-items">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-heading">
+          <div class="line-dec"></div>
+          <h1>Vélo</h1>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="owl-carousel owl-theme">
+          <a href="single-product.html">
+            <div class="featured-item">
+              <img src="assets/images/vtt1.jpg" alt="Item 1">
+              <h4>VTT</h4>
+              <h6>250€</h6>
+            </div>
+          </a>
+          <a href="single-product.html">
+            <div class="featured-item">
+              <img src="assets/images/electrique.jpg" alt="Item 2">
+              <h4>Eléctrique</h4>
+              <h6>600€</h6>
+            </div>
+          </a>
+          <a href="single-product.html">
+            <div class="featured-item">
+              <img src="assets/images/bmx1.jpg" alt="Item 3">
+              <h4>BMX</h4>
+              <h6>450€</h6>
+            </div>
+          </a>
+          <a href="single-product.html">
+            <div class="featured-item">
+              <img src="assets/images/bmxenfant.jpg" alt="Item 4">
+              <h4>BMX Enfant</h4>
+              <h6>400€</h6>
+            </div>
+          </a>
+          <a href="single-product.html">
+            <div class="featured-item">
+              <img src="assets/images/vtt2.jpg" alt="Item 5">
+              <h4>VTT Enfant</h4>
+              <h6>300€</h6>
+            </div>
+          </a>
+          <a href="single-product.html">
+            <div class="featured-item">
+              <img src="assets/images/vtt3.jpg" alt="Item 6">
+              <h4>VTT</h4>
+              <h6>250€</h6>
+            </div>
+          </a>
+          <a href="single-product.html">
+            <div class="featured-item">
+              <img src="assets/images/electriquee.jpg" alt="Item 7">
+              <h4>Electrique</h4>
+              <h6>700€</h6>
+            </div>
+          </a>
+          <a href="single-product.html">
+            <div class="featured-item">
+              <img src="assets/images/rouge.jpg" alt="Item 8">
+              <h4>BMX</h4>
+              <h6>650€</h6>
+            </div>
+          </a>
+          <a href="single-product.html">
+            <div class="featured-item">
+              <img src="assets/images/veloelectrique.jpg" alt="Item 9">
+              <h4>Electrique</h4>
+              <h6>950€</h6>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--fin articles -->
+
+
+<!-- Iconne -->
+<div class="subscribe-form">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-heading">
+          <div class="line-dec"></div>
+          <h1>Pour commander </h1>
+        </div>
+      </div>
+      <div class="col-md-8 offset-md-2">
+        <div class="main-content">
+          <p>Votre panier sera enrengistrer, veuillez poursuivre </p>
+          <div class="container">
+            <form id="Connexion" action="" method="get">
+              <div class="row">
+                <div class="col-md-7">
+                  <fieldset>
+                    <input name="email" type="text" class="form-control" id="email"
+                    onfocus="if(this.value == 'Your Email...') { this.value = ''; }"
+                  onBlur="if(this.value == '') { this.value = 'Your Email...';}"
+                  value="Your Email..." required="">
+                  </fieldset>
+                </div>
+                <div class="col-md-5">
+                  <fieldset>
+                    <button type="submit" id="form-submit" class="button">Connexion</button>
+                  </fieldset>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- iconne -->
+
 {% endblock %}
