@@ -17,4 +17,13 @@ class IndexController extends AbstractController
             'controller_name' => 'IndexController',
         ]);
     }
+    /**
+     * @Route("/BMX", name="BMX")
+     */
+    public function BMX(): Response
+    {
+        return $this->render('index/bmx.html.twig', [
+            'controller_name' => 'IndexController',
+        ]);
+    }
 }
