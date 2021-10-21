@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
   <head>
 
@@ -53,10 +53,15 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('Panier') }}"> Panier</a>
-              </li>
+            </li>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_logout') }}"> déconnexion</a>
+              {% else %}
             <li class="nav-item">
               <a class="nav-link" href="{{ path('app_login') }}"> connexion</a>
           </ul>
+              {% endif %}
         </div>
       </div>
     </nav>
