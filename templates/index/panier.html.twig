@@ -2,10 +2,22 @@
 {% block title %}sport Ludique{% endblock %}
 
 {% block body %}
-<br>
-<br>
-<br>
-<h1> Votre panier </h1>
-    <img src="assets/images/vtt_bleu.jpg">
-    
+<br><br><br>
+<h2> Votre panier {{user.Username}}</h2>
+    <div class="details">
+        <div class="nom">
+            <p> nom du produit</p>
+        </div>
+        <div class="description">
+            <p>
+                description du produit
+            </p>
+        </div>
+    </div>
+    <br>
+    <br><br><br>
+<div class="img_panier">
+    {# <img src={{Produit.image}}> #}
+</div>
+
 {% endblock %}

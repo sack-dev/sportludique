@@ -5,6 +5,9 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Utilisateur;
+use App\Entity\Produit;
+use App\Entity\Client;
 
 class IndexController extends AbstractController
 {
@@ -32,8 +35,15 @@ class IndexController extends AbstractController
      */
     public function panier(): Response
     {
+
+    // $image = $this->getImage();
+    // dd($image);
+    $user = $this->getUser();
+
         return $this->render('index/panier.html.twig', [
             'controller_name' => 'bienvenue',
+            'user' => $user,
+            // 'image' => $image,
         ]);
     }
 }
