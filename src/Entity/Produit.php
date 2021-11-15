@@ -47,17 +47,53 @@ class Produit
      */
     private $image;
 
+//GETTERS
+
+    function getIdpr():?int{
+        return $this->$idpr;
+    }
+    function getProduit():string{
+        return $this->$produit;
+    }
+
+    function getDescritption():string{
+        return $this->$description;
+    }
+
+    function getPrix():int{
+        return $this->$prix;
+    }
     public function getImage(): ?string
     {
         return $this->image;
     }
+//SETTERS
 
+
+public function setProduit(string $produit): self
+{
+    $this-> $produit = $produit;
+
+    return $this;
+}
+
+
+public function setDescription(string $description): self
+{
+    $this-> $description = $description;
+
+    return $this;
+}
+public function setPrix(int $prix): self
+{
+    $this-> $prix = $prix;
+
+    return $this;
+}
     public function setImage(string $image): self
     {
         $this->image = $image;
 
         return $this;
     }
-
-
 }
