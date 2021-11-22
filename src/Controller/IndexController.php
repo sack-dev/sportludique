@@ -36,14 +36,8 @@ class IndexController extends AbstractController
     public function panier(): Response
     {
 
-    // $image = $this->getImage();
-    // dd($image);
-    $user = $this->getUser();
-
         return $this->render('index/panier.html.twig', [
             'controller_name' => 'bienvenue',
-            'user' => $user,
-            // 'image' => $image,
         ]);
     }
 }
