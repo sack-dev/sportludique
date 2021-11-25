@@ -55,7 +55,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('Panier') }}"> Panier</a>
             </li>
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {% if is_granted ('IS_AUTHENTICATED_FULLY') %}
             <li class="nav-item">
             <a class="nav-link" href="{{ path('app_logout') }}"> déconnexion</a>
               {% else %}
