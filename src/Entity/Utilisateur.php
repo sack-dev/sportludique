@@ -4,6 +4,8 @@ namespace App\Entity;
 
 
 use App\Repository\UtilisateurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -35,6 +37,21 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Panier::class, mappedBy="utilisateur", cascade={"persist", "remove"})
+     */
+    private $panier;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Ajouter::class, mappedBy="Utilisateur")
+     */
+    private $ajout;
+
+    public function __construct()
+    {
+        $this->ajout = new ArrayCollection();
+    }
 
 
 
@@ -136,4 +153,55 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
+    public function getPanier(): ?Panier
+    {
+        return $this->panier;
+    }
+
+    public function setPanier(?Panier $panier): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($panier === null && $this->panier !== null) {
+            $this->panier->setUtilisateur(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($panier !== null && $panier->getUtilisateur() !== $this) {
+            $panier->setUtilisateur($this);
+        }
+
+        $this->panier = $panier;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Ajouter[]
+     */
+    public function getAjout(): Collection
+    {
+        return $this->ajout;
+    }
+
+    public function addAjout(Ajouter $ajout): self
+    {
+        if (!$this->ajout->contains($ajout)) {
+            $this->ajout[] = $ajout;
+            $ajout->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAjout(Ajouter $ajout): self
+    {
+        if ($this->ajout->removeElement($ajout)) {
+            // set the owning side to null (unless already changed)
+            if ($ajout->getUtilisateur() === $this) {
+                $ajout->setUtilisateur(null);
+            }
+        }
+
+        return $this;
+    }
 }
