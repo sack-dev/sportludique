@@ -18,7 +18,11 @@ class Avis
     private $id;
 
     /**
+<<<<<<< HEAD
      * @ORM\Column(type="float", nullable=true)
+=======
+     * @ORM\Column(type="integer", nullable=true)
+>>>>>>> 763e0cde738fd7666661a3f1b1b529ff208d0f2f
      */
     private $note;
 
@@ -27,22 +31,33 @@ class Avis
      */
     private $commentaire;
 
+<<<<<<< HEAD
     /**
      * @ORM\OneToOne(targetEntity=Article::class, cascade={"persist", "remove"})
      */
     private $idA;
 
+=======
+>>>>>>> 763e0cde738fd7666661a3f1b1b529ff208d0f2f
     public function getId(): ?int
     {
         return $this->id;
     }
 
+<<<<<<< HEAD
     public function getNote(): ?float
+=======
+    public function getNote(): ?int
+>>>>>>> 763e0cde738fd7666661a3f1b1b529ff208d0f2f
     {
         return $this->note;
     }
 
+<<<<<<< HEAD
     public function setNote(?float $note): self
+=======
+    public function setNote(?int $note): self
+>>>>>>> 763e0cde738fd7666661a3f1b1b529ff208d0f2f
     {
         $this->note = $note;
 
@@ -60,6 +75,7 @@ class Avis
 
         return $this;
     }
+<<<<<<< HEAD
 
     public function getIdA(): ?Article
     {
@@ -72,4 +88,6 @@ class Avis
 
         return $this;
     }
+=======
+>>>>>>> 763e0cde738fd7666661a3f1b1b529ff208d0f2f
 }

@@ -4,6 +4,8 @@ namespace App\Entity;
 
 
 use App\Repository\UtilisateurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -37,10 +39,26 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     /**
+<<<<<<< HEAD
      * @ORM\ManyToOne(targetEntity=Panier::class, inversedBy="idU")
      * @ORM\JoinColumn(nullable=false)
      */
     private $idU;
+=======
+     * @ORM\OneToOne(targetEntity=Panier::class, mappedBy="utilisateur", cascade={"persist", "remove"})
+     */
+    private $panier;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Ajouter::class, mappedBy="Utilisateur")
+     */
+    private $ajout;
+
+    public function __construct()
+    {
+        $this->ajout = new ArrayCollection();
+    }
+>>>>>>> 763e0cde738fd7666661a3f1b1b529ff208d0f2f
 
 
 
@@ -142,6 +160,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
+<<<<<<< HEAD
     public function getIdU(): ?Panier
     {
         return $this->idU;
@@ -150,8 +169,60 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIdU(?Panier $idU): self
     {
         $this->idU = $idU;
+=======
+    public function getPanier(): ?Panier
+    {
+        return $this->panier;
+    }
+
+    public function setPanier(?Panier $panier): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($panier === null && $this->panier !== null) {
+            $this->panier->setUtilisateur(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($panier !== null && $panier->getUtilisateur() !== $this) {
+            $panier->setUtilisateur($this);
+        }
+
+        $this->panier = $panier;
 
         return $this;
     }
 
+    /**
+     * @return Collection|Ajouter[]
+     */
+    public function getAjout(): Collection
+    {
+        return $this->ajout;
+    }
+
+    public function addAjout(Ajouter $ajout): self
+    {
+        if (!$this->ajout->contains($ajout)) {
+            $this->ajout[] = $ajout;
+            $ajout->setUtilisateur($this);
+        }
+>>>>>>> 763e0cde738fd7666661a3f1b1b529ff208d0f2f
+
+        return $this;
+    }
+
+<<<<<<< HEAD
+=======
+    public function removeAjout(Ajouter $ajout): self
+    {
+        if ($this->ajout->removeElement($ajout)) {
+            // set the owning side to null (unless already changed)
+            if ($ajout->getUtilisateur() === $this) {
+                $ajout->setUtilisateur(null);
+            }
+        }
+
+        return $this;
+    }
+>>>>>>> 763e0cde738fd7666661a3f1b1b529ff208d0f2f
 }
