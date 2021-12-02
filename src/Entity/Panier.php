@@ -20,7 +20,11 @@ class Panier
     private $id;
 
     /**
+<<<<<<< HEAD
+     * @ORM\Column(type="float", nullable=true)
+=======
      * @ORM\Column(type="integer", nullable=true)
+>>>>>>> 763e0cde738fd7666661a3f1b1b529ff208d0f2f
      */
     private $quantite;
 
@@ -30,6 +34,26 @@ class Panier
     private $valide;
 
     /**
+<<<<<<< HEAD
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $date;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Article::class, inversedBy="idU")
+     */
+    private $idA;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Utilisateur::class, mappedBy="idU")
+     */
+    private $idU;
+
+    public function __construct()
+    {
+        $this->idA = new ArrayCollection();
+        $this->idU = new ArrayCollection();
+=======
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $datecreation;
@@ -53,6 +77,7 @@ class Panier
     {
         $this->produit = new ArrayCollection();
         $this->ajout = new ArrayCollection();
+>>>>>>> 763e0cde738fd7666661a3f1b1b529ff208d0f2f
     }
 
     public function getId(): ?int
@@ -60,12 +85,20 @@ class Panier
         return $this->id;
     }
 
+<<<<<<< HEAD
+    public function getQuantite(): ?float
+=======
     public function getQuantite(): ?int
+>>>>>>> 763e0cde738fd7666661a3f1b1b529ff208d0f2f
     {
         return $this->quantite;
     }
 
+<<<<<<< HEAD
+    public function setQuantite(?float $quantite): self
+=======
     public function setQuantite(?int $quantite): self
+>>>>>>> 763e0cde738fd7666661a3f1b1b529ff208d0f2f
     {
         $this->quantite = $quantite;
 
@@ -84,6 +117,16 @@ class Panier
         return $this;
     }
 
+<<<<<<< HEAD
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(?\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+=======
     public function getDatecreation(): ?\DateTimeInterface
     {
         return $this->datecreation;
@@ -92,11 +135,25 @@ class Panier
     public function setDatecreation(?\DateTimeInterface $datecreation): self
     {
         $this->datecreation = $datecreation;
+>>>>>>> 763e0cde738fd7666661a3f1b1b529ff208d0f2f
 
         return $this;
     }
 
     /**
+<<<<<<< HEAD
+     * @return Collection|Article[]
+     */
+    public function getIdA(): Collection
+    {
+        return $this->idA;
+    }
+
+    public function addIdA(Article $idA): self
+    {
+        if (!$this->idA->contains($idA)) {
+            $this->idA[] = $idA;
+=======
      * @return Collection|produit[]
      */
     public function getProduit(): Collection
@@ -121,11 +178,17 @@ class Panier
             if ($produit->getPanier() === $this) {
                 $produit->setPanier(null);
             }
+>>>>>>> 763e0cde738fd7666661a3f1b1b529ff208d0f2f
         }
 
         return $this;
     }
 
+<<<<<<< HEAD
+    public function removeIdA(Article $idA): self
+    {
+        $this->idA->removeElement($idA);
+=======
     public function getUtilisateur(): ?utilisateur
     {
         return $this->utilisateur;
@@ -134,11 +197,26 @@ class Panier
     public function setUtilisateur(?utilisateur $utilisateur): self
     {
         $this->utilisateur = $utilisateur;
+>>>>>>> 763e0cde738fd7666661a3f1b1b529ff208d0f2f
 
         return $this;
     }
 
     /**
+<<<<<<< HEAD
+     * @return Collection|Utilisateur[]
+     */
+    public function getIdU(): Collection
+    {
+        return $this->idU;
+    }
+
+    public function addIdU(Utilisateur $idU): self
+    {
+        if (!$this->idU->contains($idU)) {
+            $this->idU[] = $idU;
+            $idU->setIdU($this);
+=======
      * @return Collection|Ajouter[]
      */
     public function getAjout(): Collection
@@ -151,17 +229,27 @@ class Panier
         if (!$this->ajout->contains($ajout)) {
             $this->ajout[] = $ajout;
             $ajout->setQuantite($this);
+>>>>>>> 763e0cde738fd7666661a3f1b1b529ff208d0f2f
         }
 
         return $this;
     }
 
+<<<<<<< HEAD
+    public function removeIdU(Utilisateur $idU): self
+    {
+        if ($this->idU->removeElement($idU)) {
+            // set the owning side to null (unless already changed)
+            if ($idU->getIdU() === $this) {
+                $idU->setIdU(null);
+=======
     public function removeAjout(Ajouter $ajout): self
     {
         if ($this->ajout->removeElement($ajout)) {
             // set the owning side to null (unless already changed)
             if ($ajout->getQuantite() === $this) {
                 $ajout->setQuantite(null);
+>>>>>>> 763e0cde738fd7666661a3f1b1b529ff208d0f2f
             }
         }
 

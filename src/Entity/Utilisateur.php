@@ -39,6 +39,12 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     /**
+<<<<<<< HEAD
+     * @ORM\ManyToOne(targetEntity=Panier::class, inversedBy="idU")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $idU;
+=======
      * @ORM\OneToOne(targetEntity=Panier::class, mappedBy="utilisateur", cascade={"persist", "remove"})
      */
     private $panier;
@@ -52,6 +58,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->ajout = new ArrayCollection();
     }
+>>>>>>> 763e0cde738fd7666661a3f1b1b529ff208d0f2f
 
 
 
@@ -153,6 +160,16 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
+<<<<<<< HEAD
+    public function getIdU(): ?Panier
+    {
+        return $this->idU;
+    }
+
+    public function setIdU(?Panier $idU): self
+    {
+        $this->idU = $idU;
+=======
     public function getPanier(): ?Panier
     {
         return $this->panier;
@@ -189,10 +206,13 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
             $this->ajout[] = $ajout;
             $ajout->setUtilisateur($this);
         }
+>>>>>>> 763e0cde738fd7666661a3f1b1b529ff208d0f2f
 
         return $this;
     }
 
+<<<<<<< HEAD
+=======
     public function removeAjout(Ajouter $ajout): self
     {
         if ($this->ajout->removeElement($ajout)) {
@@ -204,4 +224,5 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+>>>>>>> 763e0cde738fd7666661a3f1b1b529ff208d0f2f
 }
