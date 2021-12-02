@@ -36,6 +36,12 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $password;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Panier::class, inversedBy="idU")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $idU;
+
 
 
 
@@ -134,6 +140,18 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getIdU(): ?Panier
+    {
+        return $this->idU;
+    }
+
+    public function setIdU(?Panier $idU): self
+    {
+        $this->idU = $idU;
+
+        return $this;
     }
 
 }
