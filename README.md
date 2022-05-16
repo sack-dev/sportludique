@@ -1,2 +1,2 @@
-# sportludique
- website made in symfony
+# Sportludique
+ Website made in Symfony
